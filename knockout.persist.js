@@ -1,6 +1,8 @@
 ko.extenders.persist = function (target, key) {
 	if (key && localStorage.hasOwnProperty(key)) {
-		target(JSON.parse(localStorage.getItem(key)));
+		try {
+			target(JSON.parse(localStorage.getItem(key)));
+		} catch (e) {}
 	}
 
 	if (key) {
